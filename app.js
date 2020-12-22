@@ -2,6 +2,7 @@ const nconf = require('nconf');
 const server = require('./server');
 const { loadSettings } = require('./config/configurationAdator');
 const appSettingsPath = process.env.APP_SETTINGS_FILE_PATH;
+console.log(appSettingsPath);
 
 loadSettings({ appSettingsPath })
     .then(() => {

@@ -18,13 +18,9 @@ const createServer = options => {
         }
     });
 
-    /** 
-     * the following line is going to be removed in favor of
-     * simple multiple provided by fastify-autoload
-    */
-
-    server.get('/', async (request, reply) => {
-        return { hello: "World" };
+    /** register the plugins, routes in this case */
+    server.register(AutoLoad, {
+        dir: path.join(__dirname, 'api', 'routes')
     });
 
     /** start the server */

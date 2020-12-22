@@ -1,6 +1,5 @@
 const nconf = require('nconf');
 const _ = require('lodash');
-const { reject } = require('lodash');
 
 const loadSettings = ({ appSettingsPath }) => new Promise((resolve, reject) => {
     try {
