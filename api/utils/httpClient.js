@@ -1,4 +1,4 @@
-const request = require('request-promise-native');
+const request = require('request');
 const nconf = require('nconf');
 
 const externalAPITimeout = nconf.get('app.externalAPITimeout');
