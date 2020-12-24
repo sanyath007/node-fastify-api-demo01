@@ -22,7 +22,7 @@ const postLogin = async (req, res) => {
             const { id } = user;
             const token = await res.jwtSign({ id }, { expiresIn: nconf.get('app.userJwtExpiry') });
 
-            return res.send(new SingUpResponse({ email, token, id }));
+            return res.send(new SignUpResponse({ email, token, id }));
         }
 
         return res.send(new Error(INVALID_PASSWORD));
