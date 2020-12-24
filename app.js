@@ -1,12 +1,15 @@
 const nconf = require('nconf');
 const server = require('./server');
 const { loadSettings } = require('./config/configurationAdator');
+const { connectMongo } = require('./api/db/db');
+
 const appSettingsPath = process.env.APP_SETTINGS_FILE_PATH;
-console.log(appSettingsPath);
 
 loadSettings({ appSettingsPath })
     .then(() => {
-        //TODO: Connect to db, if any
+        /** Connect to db */
+        const mongoURI = nconf.get('db.mongodb.uri');
+        connectMongo(mongoURI);
 
         /** Read the config property require for starting the server */
         const serverOptions = {
