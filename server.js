@@ -29,6 +29,15 @@ const createServer = options => {
         secret: nconf.get('secrets.jwt')
     });
 
+    /** add auth decorator to verify user authentication */
+    server.decorate('auth', async (request, reply) => {
+        try {
+            await request.jwtVerify();
+        } catch (err) {
+            reply.send(err);
+        }
+    });
+
     /** start the server */
     server.listen(3001, err => {
         if(err) {
