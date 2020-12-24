@@ -2,6 +2,8 @@ const Fastify = require('fastify');
 const path = require('path');
 const AutoLoad = require('fastify-autoload');
 const uuid = require('uuid');
+const nconf = require('nconf');
+const jwt = require('fastify-jwt');
 
 /** create request ids */
 const createRequestId = () => uuid();
@@ -21,6 +23,10 @@ const createServer = options => {
     /** register the plugins, routes in this case */
     server.register(AutoLoad, {
         dir: path.join(__dirname, 'api', 'routes')
+    });
+
+    server.register(jwt, {
+        secret: nconf.get('secret.jwt')
     });
 
     /** start the server */
