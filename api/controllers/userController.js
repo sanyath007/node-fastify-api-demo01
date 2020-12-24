@@ -1,9 +1,9 @@
-const { getUsers } = require('../adaptors/userAdaptor');
+const userAdator = require('../adaptors/userAdaptor');
 
-const getUsersCtrl = async (req, res) => {
+const getUsers = async (req, res) => {
     try {
         const { page } = req.query;
-        const users = await getUsers({ page });
+        const users = await userAdator.getUsers({ page });
 
         res.send(users);
     } catch (err) {
@@ -12,5 +12,5 @@ const getUsersCtrl = async (req, res) => {
 }
 
 module.exports = {
-    getUsersCtrl
-}
+    getUsers
+};

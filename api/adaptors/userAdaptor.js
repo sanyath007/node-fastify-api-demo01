@@ -5,10 +5,10 @@ const { getRequest } = require('../utils/httpClient');
 
 const usersAPIUrl = nconf.get('url.usersAPI');
 
-const getUsers = ({ page = 1 }) => getRequest({
-    url: joinUrl(usersAPIUrl, 'users', `?page=${page}`)
-});
+const userAdator = {
+    getUsers: ({ page = 1 }) => getRequest({
+        url: joinUrl(usersAPIUrl, 'users', `?page=${page}`)
+    }),
+};
 
-module.exports = {
-    getUsers
-}
+module.exports = userAdator;
