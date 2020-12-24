@@ -26,7 +26,7 @@ const createServer = options => {
     });
 
     server.register(jwt, {
-        secret: nconf.get('secret.jwt')
+        secret: nconf.get('secrets.jwt')
     });
 
     /** start the server */
